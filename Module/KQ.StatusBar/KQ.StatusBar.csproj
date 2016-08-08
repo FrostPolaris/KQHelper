@@ -82,7 +82,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KQ.Core\KQ.Core.csproj">
+    <ProjectReference Include="..\..\Framework\KQ.Core\KQ.Core.csproj">
       <Project>{6c2c5d8a-64ff-48da-a7f3-639393f8e560}</Project>
       <Name>KQ.Core</Name>
     </ProjectReference>

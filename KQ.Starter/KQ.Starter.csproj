@@ -73,11 +73,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KQ.Core\KQ.Core.csproj">
+    <ProjectReference Include="..\Framework\KQ.Core\KQ.Core.csproj">
       <Project>{6c2c5d8a-64ff-48da-a7f3-639393f8e560}</Project>
       <Name>KQ.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KQ.StatusBar\KQ.StatusBar.csproj">
+    <ProjectReference Include="..\Module\KQ.Render\KQ.Render.csproj">
+      <Project>{7d03e396-3115-47a8-96cb-de6d2deda2ee}</Project>
+      <Name>KQ.Render</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Module\KQ.StatusBar\KQ.StatusBar.csproj">
       <Project>{d56af261-0351-406f-8a27-94f2f5216f84}</Project>
       <Name>KQ.StatusBar</Name>
     </ProjectReference>
