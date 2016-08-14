@@ -13,29 +13,16 @@ namespace KQ.StatusBar
     /// </summary>
     public class StatusBarModule : IModule
     {
-        /// <summary>
-        /// 模块类型
-        /// </summary>
-        public EModuleType ModuleType
+        public string ModuleName
         {
-            get { return EModuleType.StatusBar; }
+            get { return "StatusBar"; }
         }
 
-        /// <summary>
-        /// 状态栏控件
-        /// </summary>
-        private StatusBar statusBar;
+        private StatusBar theStatusBar = new StatusBar();
 
-        /// <summary>
-        /// 获取用户控件
-        /// </summary>
-        /// <returns></returns>
-        public UserControl GetUserControl()
+        public void Initialize()
         {
-            if (statusBar == null)
-                statusBar = new StatusBar();
-
-            return statusBar;
+            MainWindowController.Instance.RegistContent(theStatusBar);
         }
     }
 }

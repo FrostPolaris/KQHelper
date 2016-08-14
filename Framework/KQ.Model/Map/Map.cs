@@ -47,22 +47,22 @@ namespace KQ.Model
         /// <summary>
         /// 添加新的区块
         /// </summary>
-        /// <param name="newRegion">新的区块</param>
+        /// <param name="newBlock">新的区块</param>
         /// <returns>是否成功添加</returns>
-        public bool AddRegion(MapBlock newRegion)
+        public bool AddBlock(MapBlock newBlock)
         {
-            if (!newRegion.Size.IsValid)
+            if (!newBlock.Size.IsValid)
                 return false;
 
             //如果新的区块和已有区块重合，则不添加
-            foreach(MapBlock region in blockList)
+            foreach(MapBlock block in blockList)
             {
-                if (region.CheckIsOverlapped(newRegion))
+                if (block.CheckIsOverlapped(newBlock))
                     return false;
             }
 
-            newRegion.ParentMap = this;
-            blockList.Add(newRegion);
+            newBlock.ParentMap = this;
+            blockList.Add(newBlock);
             RefreshPositionAndSize();
 
             return true;
@@ -98,6 +98,18 @@ namespace KQ.Model
 
             Position = new MPosition(minX, minY);
             Size = new MSize((maxX - minX), (maxY - minY));
+        }
+
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(string.Format("名称：{0}", Name));
+            sb.Append(string.Format("  坐标：（{0}）", Position));
+            sb.Append(string.Format("  尺寸：({0})", Size));
+            sb.Append(string.Format("  区块数量：{0}", blockList.Count));
+
+            return sb.ToString();
         }
     }
 }

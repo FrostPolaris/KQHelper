@@ -12,14 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KQ.Core;
 
 namespace KQ.Render
 {
     /// <summary>
     /// UserControl1.xaml 的交互逻辑
     /// </summary>
-    public partial class MainCanvas : UserControl
+    public partial class MainCanvas : UserControl, IMainWindowContent
     {
+        
+
+        public string ContentName
+        {
+            get { return "MainCanvas"; }
+        }
+
+        public UserControl GetControl()
+        {
+            return this;
+        }
+
         public MainCanvas()
         {
             InitializeComponent();

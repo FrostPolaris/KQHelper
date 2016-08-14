@@ -8,18 +8,19 @@ using System.Windows.Controls;
 namespace KQ.Core
 {
     /// <summary>
-    /// 用户控件接口
+    /// 主窗口内容接口
     /// </summary>
-    public interface IModule
+    public interface IMainWindowContent
     {
         /// <summary>
-        /// 模块名称
+        /// 名称
         /// </summary>
-        string ModuleName { get; }
+        string ContentName { get; }
 
         /// <summary>
-        /// 初始化
+        /// 获取控件
         /// </summary>
-        void Initialize();
+        /// <returns>对应的控件</returns>
+        UserControl GetControl();
     }
 }

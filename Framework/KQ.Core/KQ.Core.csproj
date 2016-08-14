@@ -47,9 +47,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EModuleType.cs" />
+    <Compile Include="MainWindow\IMainWindowContent.cs" />
     <Compile Include="IModule.cs" />
-    <Compile Include="View\MainWindow.xaml.cs">
+    <Compile Include="MainWindow\MainWindowController.cs" />
+    <Compile Include="MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -78,10 +79,20 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\MainWindow.xaml">
+    <Page Include="MainWindow\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KQ.Game\KQ.GamePlay.csproj">
+      <Project>{98158457-bc19-4977-b5f5-de571628485e}</Project>
+      <Name>KQ.GamePlay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KQ.Model\KQ.Model.csproj">
+      <Project>{60dcf2e0-6c07-4afe-99b8-bac8d98e2d39}</Project>
+      <Name>KQ.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

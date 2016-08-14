@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module", "Module", "{1C429F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KQ.Core", "Framework\KQ.Core\KQ.Core.csproj", "{6C2C5D8A-64FF-48DA-A7F3-639393F8E560}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KQ.Game", "Framework\KQ.Game\KQ.Game.csproj", "{98158457-BC19-4977-B5F5-DE571628485E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KQ.GamePlay", "Framework\KQ.Game\KQ.GamePlay.csproj", "{98158457-BC19-4977-B5F5-DE571628485E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KQ.Model", "Framework\KQ.Model\KQ.Model.csproj", "{60DCF2E0-6C07-4AFE-99B8-BAC8D98E2D39}"
 EndProject

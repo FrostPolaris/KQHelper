@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KQ.GamePlay;
 
 namespace KQ.Core
 {
@@ -17,12 +18,18 @@ namespace KQ.Core
         public static ModuleManager ModuleManager { get; private set; }
 
         /// <summary>
+        /// 游戏服务
+        /// </summary>
+        public static GameService GameService { get; private set; }
+
+        /// <summary>
         /// 初始化
         /// </summary>
         /// <param name="moduleList">模块列表</param>
         public static void Initialize()
         {
             ModuleManager = ModuleManager.Instance;
+            GameService = GameService.Instance;
         }
     }
 }

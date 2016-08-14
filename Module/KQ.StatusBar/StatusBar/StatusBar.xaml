@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
-            
+             d:DesignHeight="50" d:DesignWidth="600">
+    <Grid>
+        <Label x:Name="LabelMapInfo" Content="{Binding CurrentGame.CurrentMap, Mode=OneWay}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0" />
     </Grid>
 </UserControl>

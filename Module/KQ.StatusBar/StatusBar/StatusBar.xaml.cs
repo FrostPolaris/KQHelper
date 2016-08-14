@@ -12,17 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KQ.Core;
 
 namespace KQ.StatusBar
 {
     /// <summary>
     /// UserControl1.xaml 的交互逻辑
     /// </summary>
-    public partial class StatusBar : UserControl
+    public partial class StatusBar : UserControl, IMainWindowContent
     {
+        public string ContentName
+        {
+            get { return "StatusBar"; }
+        }
+
+        public UserControl GetControl()
+        {
+            return this;
+        }
+
         public StatusBar()
         {
             InitializeComponent();
+            this.DataContext = new StatusBarViewModel();
         }
+
     }
 }

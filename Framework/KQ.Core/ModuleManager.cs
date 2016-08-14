@@ -41,15 +41,27 @@ namespace KQ.Core
         }
 
         /// <summary>
+        /// 初始化
+        /// </summary>
+        public void Initialize()
+        {
+            foreach (IModule module in ModuleList)
+                module.Initialize();
+        }
+
+        /// <summary>
         /// 查找指定的模块
         /// </summary>
         /// <param name="moduleType">模块类型</param>
         /// <returns>想要查找的模块，未找到时返回空</returns>
-        public IModule FindModule(EModuleType moduleType)
+        public IModule FindModule(string moduleName)
         {
+            if (string.IsNullOrEmpty(moduleName))
+                return null;
+
             foreach(IModule module in ModuleList)
             {
-                if (module.ModuleType == moduleType)
+                if (moduleName.Equals(module.ModuleName))
                     return module;
             }
 

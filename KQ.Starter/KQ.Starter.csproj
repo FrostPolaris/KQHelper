@@ -77,6 +77,14 @@
       <Project>{6c2c5d8a-64ff-48da-a7f3-639393f8e560}</Project>
       <Name>KQ.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework\KQ.Game\KQ.GamePlay.csproj">
+      <Project>{98158457-bc19-4977-b5f5-de571628485e}</Project>
+      <Name>KQ.GamePlay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework\KQ.Model\KQ.Model.csproj">
+      <Project>{60dcf2e0-6c07-4afe-99b8-bac8d98e2d39}</Project>
+      <Name>KQ.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Module\KQ.Render\KQ.Render.csproj">
       <Project>{7d03e396-3115-47a8-96cb-de6d2deda2ee}</Project>
       <Name>KQ.Render</Name>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KQ.Core;
+using KQ.Render;
 using KQ.StatusBar;
 
 namespace KQ.Starter
@@ -33,6 +34,10 @@ namespace KQ.Starter
             Services.Initialize();
 
             Services.ModuleManager.RegistModule(new StatusBarModule());
+            Services.ModuleManager.RegistModule(new RenderModule());
+            Services.ModuleManager.Initialize();
+
+            Services.GameService.Initialize();
         }
 
         private static void MainWindowClosedHandler(object sender, EventArgs e)

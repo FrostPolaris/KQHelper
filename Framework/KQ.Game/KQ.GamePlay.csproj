@@ -7,7 +7,7 @@
     <ProjectGuid>{98158457-BC19-4977-B5F5-DE571628485E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KQ.Game</RootNamespace>
+    <RootNamespace>KQ.GamePlay</RootNamespace>
     <AssemblyName>KQ.Game</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,8 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameService.cs" />
+    <Compile Include="MapChangedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KQ.Model\KQ.Model.csproj">
+      <Project>{60dcf2e0-6c07-4afe-99b8-bac8d98e2d39}</Project>
+      <Name>KQ.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
