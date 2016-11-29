@@ -3,22 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using KQ.Core;
 
 namespace KQ.Render
 {
-    public class RenderModule : IModule
+    public class RenderModule : IWidgetModule
     {
-        public string ModuleName
+        EModuleType IModule.ModuleType
         {
-            get { return "RenderModule"; }
+            get { return EModuleType.Render; }
         }
 
         private MainCanvas theMainCanvas = new MainCanvas();
 
-        public void Initialize()
+        UserControl IWidgetModule.GetWidget()
         {
-            MainWindowController.Instance.RegistContent(theMainCanvas);
+            return theMainCanvas;
+        }
+
+        void IModule.Initialize()
+        {
         }
     }
 }

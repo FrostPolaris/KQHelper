@@ -47,7 +47,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMainWindowContent.cs" />
     <Compile Include="MainCanvas.xaml.cs">
       <DependentUpon>MainCanvas.xaml</DependentUpon>
     </Compile>

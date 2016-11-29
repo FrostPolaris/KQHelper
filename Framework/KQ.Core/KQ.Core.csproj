@@ -47,10 +47,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindow\IMainWindowContent.cs" />
+    <Compile Include="EModuleType.cs" />
+    <Compile Include="IWidgetModule.cs" />
     <Compile Include="IModule.cs" />
-    <Compile Include="MainWindow\MainWindowController.cs" />
-    <Compile Include="MainWindow\MainWindow.xaml.cs">
+    <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -67,7 +67,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Services.cs" />
-    <Compile Include="ModuleManager.cs" />
+    <Compile Include="ModuleService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -79,15 +79,15 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainWindow\MainWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KQ.Game\KQ.GamePlay.csproj">
+    <ProjectReference Include="..\KQ.Game\KQ.Game.csproj">
       <Project>{98158457-bc19-4977-b5f5-de571628485e}</Project>
-      <Name>KQ.GamePlay</Name>
+      <Name>KQ.Game</Name>
     </ProjectReference>
     <ProjectReference Include="..\KQ.Model\KQ.Model.csproj">
       <Project>{60dcf2e0-6c07-4afe-99b8-bac8d98e2d39}</Project>

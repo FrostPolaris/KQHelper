@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KQ.Model;
 
-namespace KQ.GamePlay
+namespace KQ.Game
 {
     public class MapChangedEventArgs : EventArgs
     {

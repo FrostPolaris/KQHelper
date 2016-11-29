@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KQ.Core;
-using KQ.GamePlay;
+using KQ.Game;
 using KQ.Model;
 
 namespace KQ.StatusBar
@@ -18,14 +18,14 @@ namespace KQ.StatusBar
         {
             get
             {
-                Game curGame = Services.GameService.CurrentGame;
+                GameInstance curGame = Services.Game.TheGameInstance;
                 return curGame.CurrentMap;
             }
         }
 
-        public Game CurrentGame
+        public GameInstance CurrentGame
         {
-            get { return Services.GameService.CurrentGame; }
+            get { return Services.Game.TheGameInstance; }
         }
 
     }

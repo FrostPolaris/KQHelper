@@ -8,18 +8,14 @@ using System.Windows.Controls;
 namespace KQ.Core
 {
     /// <summary>
-    /// 用户控件接口
+    /// 带有UI部件的模块
     /// </summary>
-    public interface IModule
+    public interface IWidgetModule : IModule
     {
         /// <summary>
-        /// 模块类型
+        /// 获取部件
         /// </summary>
-        EModuleType ModuleType { get; }
-
-        /// <summary>
-        /// 初始化
-        /// </summary>
-        void Initialize();
+        /// <returns>对应的部件</returns>
+        UserControl GetWidget();
     }
 }

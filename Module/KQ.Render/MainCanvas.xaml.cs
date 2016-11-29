@@ -19,20 +19,8 @@ namespace KQ.Render
     /// <summary>
     /// UserControl1.xaml 的交互逻辑
     /// </summary>
-    public partial class MainCanvas : UserControl, IMainWindowContent
+    public partial class MainCanvas : UserControl
     {
-        
-
-        public string ContentName
-        {
-            get { return "MainCanvas"; }
-        }
-
-        public UserControl GetControl()
-        {
-            return this;
-        }
-
         public MainCanvas()
         {
             InitializeComponent();

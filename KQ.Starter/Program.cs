@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using KQ.Core;
 using KQ.Render;
@@ -22,22 +20,17 @@ namespace KQ.Starter
 
             InitializeService();
 
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Closed += MainWindowClosedHandler;
-            mainWindow.Show();
-
             Application.Run();
         }
 
         private static void InitializeService()
         {
-            Services.Initialize();
+            List<IModule> allModules = new List<IModule>();
+            allModules.Add(new StatusBarModule());
+            allModules.Add(new RenderModule());
 
-            Services.ModuleManager.RegistModule(new StatusBarModule());
-            Services.ModuleManager.RegistModule(new RenderModule());
-            Services.ModuleManager.Initialize();
-
-            Services.GameService.Initialize();
+            Services.Initialize(allModules);
+            Services.TheMainWindow.Closed += MainWindowClosedHandler;
         }
 
         private static void MainWindowClosedHandler(object sender, EventArgs e)

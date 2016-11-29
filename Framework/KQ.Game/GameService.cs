@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KQ.Model;
 
-namespace KQ.GamePlay
+namespace KQ.Game
 {
     /// <summary>
     /// 游戏服务
@@ -20,9 +20,9 @@ namespace KQ.GamePlay
         }
 
         /// <summary>
-        /// 当前游戏
+        /// 当前游戏实例
         /// </summary>
-        public Game CurrentGame
+        public GameInstance TheGameInstance
         {
             get { return _currentGame; }
             set
@@ -31,14 +31,14 @@ namespace KQ.GamePlay
                 RaisePropertyChanged("CurrentGame");
             }
         }
-        private Game _currentGame;
+        private GameInstance _currentGame;
 
         /// <summary>
         /// 初始化
         /// </summary>
         public void Initialize()
         {
-            CurrentGame = new Game();
+            TheGameInstance = new GameInstance();
         }
     }
 }

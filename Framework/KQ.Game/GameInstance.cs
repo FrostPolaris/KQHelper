@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using KQ.Model;
 
-namespace KQ.GamePlay
+namespace KQ.Game
 {
-    public class Game : NotificationObject
+    public class GameInstance : NotificationObject
     {
         /// <summary>
         /// 地图列表
@@ -36,7 +36,7 @@ namespace KQ.GamePlay
         /// <summary>
         /// 构造函数
         /// </summary>
-        public Game()
+        public GameInstance()
         {
             InitWithTestMap();
         }

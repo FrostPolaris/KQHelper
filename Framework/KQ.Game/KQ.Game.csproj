@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game.cs" />
+    <Compile Include="GameInstance.cs" />
     <Compile Include="GameService.cs" />
     <Compile Include="MapChangedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

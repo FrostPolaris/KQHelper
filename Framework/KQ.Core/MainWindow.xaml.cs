@@ -28,9 +28,8 @@ namespace KQ.Core
 
         private void Initialize()
         {
-            MainWindowController controller = MainWindowController.Instance;
-            GridStatusBar.Children.Add(controller.GetContent("StatusBar").GetControl());
-            GridMainCanvas.Children.Add(controller.GetContent("MainCanvas").GetControl());
+            GridStatusBar.Children.Add(Services.Module.GetWidget(EModuleType.StatusBar));
+            GridMainCanvas.Children.Add(Services.Module.GetWidget(EModuleType.Render));
         }
     }
 }

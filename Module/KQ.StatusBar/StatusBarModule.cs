@@ -11,18 +11,22 @@ namespace KQ.StatusBar
     /// <summary>
     /// 状态栏模块
     /// </summary>
-    public class StatusBarModule : IModule
+    public class StatusBarModule : IWidgetModule
     {
-        public string ModuleName
+        EModuleType IModule.ModuleType
         {
-            get { return "StatusBar"; }
+            get { return EModuleType.StatusBar; }
         }
 
         private StatusBar theStatusBar = new StatusBar();
 
-        public void Initialize()
+        UserControl IWidgetModule.GetWidget()
         {
-            MainWindowController.Instance.RegistContent(theStatusBar);
+            return theStatusBar;
+        }
+
+        void IModule.Initialize()
+        {
         }
     }
 }

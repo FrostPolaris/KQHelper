@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KQ.GamePlay;
+using KQ.Game;
 
 namespace KQ.Core
 {
@@ -13,23 +13,34 @@ namespace KQ.Core
     public static class Services
     {
         /// <summary>
-        /// 模块管理器
+        /// 模块服务
         /// </summary>
-        public static ModuleManager ModuleManager { get; private set; }
+        internal static ModuleService Module { get; private set; }
 
         /// <summary>
         /// 游戏服务
         /// </summary>
-        public static GameService GameService { get; private set; }
+        public static GameService Game { get; private set; }
 
         /// <summary>
-        /// 初始化
+        /// 主窗口实例
         /// </summary>
-        /// <param name="moduleList">模块列表</param>
-        public static void Initialize()
+        public static MainWindow TheMainWindow { get; private set; }
+
+        /// <summary>
+        /// 初始化服务
+        /// </summary>
+        /// <param name="allModules">所有的模块</param>
+        public static void Initialize(IReadOnlyCollection<IModule> allModules)
         {
-            ModuleManager = ModuleManager.Instance;
-            GameService = GameService.Instance;
+            Module = new ModuleService();
+            Module.Initialize(allModules);
+
+            Game = GameService.Instance;
+            Game.Initialize();
+
+            TheMainWindow = new MainWindow();
+            TheMainWindow.Show();
         }
     }
 }

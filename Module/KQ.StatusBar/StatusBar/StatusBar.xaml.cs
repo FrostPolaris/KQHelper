@@ -19,17 +19,8 @@ namespace KQ.StatusBar
     /// <summary>
     /// UserControl1.xaml 的交互逻辑
     /// </summary>
-    public partial class StatusBar : UserControl, IMainWindowContent
+    public partial class StatusBar : UserControl
     {
-        public string ContentName
-        {
-            get { return "StatusBar"; }
-        }
-
-        public UserControl GetControl()
-        {
-            return this;
-        }
 
         public StatusBar()
         {
