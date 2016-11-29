@@ -114,6 +114,24 @@ namespace KQ.Model
         #region 公有方法
 
         /// <summary>
+        /// 获取单元格
+        /// </summary>
+        /// <param name="indexX">单元格在区块内的X索引</param>
+        /// <param name="indexY">单元格在区块内的Y索引</param>
+        /// <returns></returns>
+        public MapCell GetMapCell(int indexX, int indexY)
+        {
+            if (indexX < 0 || indexX >= Size.X
+                || indexY < 0 || indexY >= Size.Y)
+            {
+                return null;
+            }
+
+            int index = Size.X * indexY + indexX;
+            return mapCellList[index];
+        }
+
+        /// <summary>
         /// 检测某一区块是否与自身重合(按位置和尺寸计算，不考虑是否为同一父级地图)
         /// </summary>
         /// <param name="other">其它区块</param>

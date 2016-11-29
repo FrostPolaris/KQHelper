@@ -11,7 +11,7 @@ namespace KQ.Core
     /// </summary>
     public enum EModuleType
     {
-        Render,
+        Map,
         StatusBar,
     }
 }

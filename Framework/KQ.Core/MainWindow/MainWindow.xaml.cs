@@ -29,7 +29,7 @@ namespace KQ.Core
         private void Initialize()
         {
             GridStatusBar.Children.Add(Services.Module.GetWidget(EModuleType.StatusBar));
-            GridMainCanvas.Children.Add(Services.Module.GetWidget(EModuleType.Render));
+            GridMainCanvas.Children.Add(Services.Module.GetWidget(EModuleType.Map));
         }
     }
 }

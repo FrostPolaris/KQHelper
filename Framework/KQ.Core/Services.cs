@@ -33,11 +33,11 @@ namespace KQ.Core
         /// <param name="allModules">所有的模块</param>
         public static void Initialize(IReadOnlyCollection<IModule> allModules)
         {
-            Module = new ModuleService();
-            Module.Initialize(allModules);
-
             Game = GameService.Instance;
             Game.Initialize();
+
+            Module = new ModuleService();
+            Module.Initialize(allModules);
 
             TheMainWindow = new MainWindow();
             TheMainWindow.Show();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using KQ.Core;
-using KQ.Render;
+using KQ.MapPanel;
 using KQ.StatusBar;
 
 namespace KQ.Starter
@@ -27,7 +27,7 @@ namespace KQ.Starter
         {
             List<IModule> allModules = new List<IModule>();
             allModules.Add(new StatusBarModule());
-            allModules.Add(new RenderModule());
+            allModules.Add(new MapModule());
 
             Services.Initialize(allModules);
             Services.TheMainWindow.Closed += MainWindowClosedHandler;

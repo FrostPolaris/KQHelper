@@ -29,11 +29,11 @@ namespace KQ.Model
         /// <summary>
         /// 区块列表
         /// </summary>
-        public IReadOnlyList<MapBlock> RegionList
+        public IReadOnlyList<MapBlock> BlockList
         {
-            get { return blockList; }
+            get { return _blockList; }
         }
-        private List<MapBlock> blockList = new List<MapBlock>();
+        private List<MapBlock> _blockList = new List<MapBlock>();
 
         /// <summary>
         /// 构造函数
@@ -68,13 +68,13 @@ namespace KQ.Model
             MapBlock newBlock = new MapBlock(this, position, size);
 
             //如果新的区块和已有区块重合，则不添加
-            foreach (MapBlock block in blockList)
+            foreach (MapBlock block in _blockList)
             {
                 if (block.CheckIsOverlapped(newBlock))
                     return false;
             }
 
-            blockList.Add(newBlock);
+            _blockList.Add(newBlock);
             RefreshPositionAndSize();
             return true;
         }
@@ -84,18 +84,18 @@ namespace KQ.Model
         /// </summary>
         private void RefreshPositionAndSize()
         {
-            if (blockList.Count == 0)
+            if (_blockList.Count == 0)
             {
                 Position = Vector2D.GetOrigin();
                 Size = Vector2D.GetOrigin();
                 return;
             }
 
-            int minX = blockList[0].MinX;
-            int minY = blockList[0].MinY;
-            int maxX = blockList[0].MaxX;
-            int maxY = blockList[0].MaxY;
-            foreach (MapBlock block in blockList)
+            int minX = _blockList[0].MinX;
+            int minY = _blockList[0].MinY;
+            int maxX = _blockList[0].MaxX;
+            int maxY = _blockList[0].MaxY;
+            foreach (MapBlock block in _blockList)
             {
                 if (block.MinX < minX)
                     minX = block.MinX;
@@ -118,7 +118,7 @@ namespace KQ.Model
             sb.Append(string.Format("名称：{0}", Name));
             sb.Append(string.Format("  坐标：（{0}）", Position));
             sb.Append(string.Format("  尺寸：({0})", Size));
-            sb.Append(string.Format("  区块数量：{0}", blockList.Count));
+            sb.Append(string.Format("  区块数量：{0}", _blockList.Count));
 
             return sb.ToString();
         }

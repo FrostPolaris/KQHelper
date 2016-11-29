@@ -14,16 +14,24 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KQ.Core;
 
-namespace KQ.Render
+namespace KQ.MapPanel
 {
     /// <summary>
-    /// UserControl1.xaml 的交互逻辑
+    /// MapPanel.xaml 的交互逻辑
     /// </summary>
-    public partial class MainCanvas : UserControl
+    public partial class MapPanel : UserControl
     {
-        public MainCanvas()
+        public MapPanel()
         {
             InitializeComponent();
+        }
+
+        public void Initialize()
+        {
+            MapWidget mapWidget = new MapWidget(Services.Game.TheGameInstance.CurrentMap);
+            Grid_Root.Children.Add(mapWidget);
+            //mapWidget.HorizontalAlignment = HorizontalAlignment.Center;
+            //mapWidget.VerticalAlignment = VerticalAlignment.Center;
         }
     }
 }

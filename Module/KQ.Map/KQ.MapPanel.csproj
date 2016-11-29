@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D03E396-3115-47A8-96CB-DE6D2DEDA2EE}</ProjectGuid>
+    <ProjectGuid>{7942EBA5-5C3C-46C0-8BE1-F486EEBBF7D5}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KQ.Render</RootNamespace>
-    <AssemblyName>KQ.Render</AssemblyName>
+    <RootNamespace>KQ.Map</RootNamespace>
+    <AssemblyName>KQ.Map</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -47,8 +49,37 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainCanvas.xaml.cs">
-      <DependentUpon>MainCanvas.xaml</DependentUpon>
+    <Page Include="View\MapBlockWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapCellWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="View\MapBlockWidget.xaml.cs">
+      <DependentUpon>MapBlockWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapCellWidget.xaml.cs">
+      <DependentUpon>MapCellWidget.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\MapPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MapWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MapModule.cs" />
+    <Compile Include="View\MapPanel.xaml.cs">
+      <DependentUpon>MapPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapWidget.xaml.cs">
+      <DependentUpon>MapWidget.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -63,7 +94,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RenderModule.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,23 +105,18 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MapWidget\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Framework\KQ.Core\KQ.Core.csproj">
       <Project>{6c2c5d8a-64ff-48da-a7f3-639393f8e560}</Project>
       <Name>KQ.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\KQ.Game\KQ.Game.csproj">
+      <Project>{98158457-bc19-4977-b5f5-de571628485e}</Project>
+      <Name>KQ.Game</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Framework\KQ.Model\KQ.Model.csproj">
       <Project>{60dcf2e0-6c07-4afe-99b8-bac8d98e2d39}</Project>
       <Name>KQ.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="MainCanvas.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

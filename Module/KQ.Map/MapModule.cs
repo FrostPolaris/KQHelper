@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using KQ.Core;
 
-namespace KQ.Render
+namespace KQ.MapPanel
 {
-    public class RenderModule : IWidgetModule
+    public class MapModule : IWidgetModule
     {
         EModuleType IModule.ModuleType
         {
-            get { return EModuleType.Render; }
+            get { return EModuleType.Map; }
         }
 
-        private MainCanvas theMainCanvas = new MainCanvas();
+        private MapPanel mapPanel = new MapPanel();
 
         UserControl IWidgetModule.GetWidget()
         {
-            return theMainCanvas;
+            return mapPanel;
         }
 
         void IModule.Initialize()
         {
+            mapPanel.Initialize();
         }
     }
 }

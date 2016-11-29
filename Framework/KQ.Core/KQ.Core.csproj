@@ -50,7 +50,7 @@
     <Compile Include="EModuleType.cs" />
     <Compile Include="IWidgetModule.cs" />
     <Compile Include="IModule.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -79,7 +79,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainWindow.xaml">
+    <Page Include="MainWindow\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -43,6 +43,12 @@ namespace KQ.Model
             return (this.X == other.Value.X && this.Y == other.Value.Y);
         }
 
+        public override int GetHashCode()
+        {
+            int tempInt = X + (Y << 16);
+            return tempInt.GetHashCode();
+        }
+
         public override string ToString()
         {
             return string.Format("{0}, {1}", X, Y);
