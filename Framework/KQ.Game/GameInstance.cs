@@ -58,10 +58,10 @@ namespace KQ.Game
         private void InitWithTestMap()
         {
             Map testMap = new Map("测试地图");
-            testMap.AddBlock(new MapBlock(0, 0, 8, 8));
-            testMap.AddBlock(new MapBlock(0, 8, 8, 8));
-            testMap.AddBlock(new MapBlock(8, 0, 8, 8));
-            testMap.AddBlock(new MapBlock(8, 8, 8, 8));
+            testMap.AppendBlock(0, 0, 8, 8);
+            testMap.AppendBlock(0, 8, 8, 8);
+            testMap.AppendBlock(8, 0, 8, 8);
+            testMap.AppendBlock(8, 8, 8, 8);
 
             mapList.Add(testMap);
         }

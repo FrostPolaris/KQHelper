@@ -13,9 +13,14 @@ namespace KQ.Model
     {
         #region 属性与字段
         /// <summary>
-        /// 区块在父地图中的整体位置
+        /// 区块在父级Map中的位置（左上角单元格的位置）
         /// </summary>
-        public MPosition Position { get; private set; }
+        public Vector2D Position { get; private set; }
+
+        /// <summary>
+        /// 区块的尺寸
+        /// </summary>
+        public Vector2D Size { get; private set; }
 
         /// <summary>
         /// 所占区域的最小X坐标
@@ -30,7 +35,7 @@ namespace KQ.Model
         /// </summary>
         public int MaxX
         {
-            get { return Position.X + Size.Width - 1; }
+            get { return Position.X + Size.X - 1; }
         }
 
         /// <summary>
@@ -46,18 +51,13 @@ namespace KQ.Model
         /// </summary>
         public int MaxY
         {
-            get { return Position.Y + Size.Height - 1; }
+            get { return Position.Y + Size.Y - 1; }
         }
-
-        /// <summary>
-        /// 区块的尺寸
-        /// </summary>
-        public MSize Size { get; private set; }
 
         /// <summary>
         /// 父级地图
         /// </summary>
-        public Map ParentMap { get; internal set; }
+        public Map OwningMap { get; private set; }
 
         /// <summary>
         /// 单元格列表
@@ -70,31 +70,41 @@ namespace KQ.Model
         #endregion
 
         #region 构造与初始化
-        public MapBlock()
-            : this(0, 0, 0, 0)
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="parent">父级地图</param>
+        /// <param name="x">区块位置的X坐标</param>
+        /// <param name="y">区块位置的Y坐标</param>
+        /// <param name="w">区块的宽度</param>
+        /// <param name="h">区块的高度</param>
+        public MapBlock(Map parent, int x, int y, int w, int h)
+            : this(parent, new Vector2D(x, y), new Vector2D(w, h))
         {
         }
 
-        public MapBlock(int x, int y, int w, int h)
-            : this(new MPosition(x, y), new MSize(w, h))
-        {
-        }
-
-        public MapBlock(MPosition position, MSize size)
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="parent">父级地图</param>
+        /// <param name="position">区块的位置</param>
+        /// <param name="size">区块的尺寸</param>
+        public MapBlock(Map parent, Vector2D position, Vector2D size)
         {
             this.Position = position;
             this.Size = size;
-            if (this.Position == null)
-                this.Position = new MPosition();
-            if (this.Size == null)
-                this.Size = new MSize();
 
-            for (int x = 0; x < Size.Width; x++)
+            if (Size.X <= 0 || Size.Y <= 0)
             {
-                for (int y = 0; y < Size.Height; y++)
+                throw new ArgumentException("区块尺寸的X和Y必须均为正整数。");
+            }
+
+            for (int x = 0; x < Size.X; x++)
+            {
+                for (int y = 0; y < Size.Y; y++)
                 {
-                    MapCell newCell = new MapCell(x, y);
-                    newCell.ParentBlock = this;
+                    MapCell newCell = new MapCell(this, Position.X + x, Position.Y + y);
                     mapCellList.Add(newCell);
                 }
             }
@@ -102,6 +112,7 @@ namespace KQ.Model
         #endregion
 
         #region 公有方法
+
         /// <summary>
         /// 检测某一区块是否与自身重合(按位置和尺寸计算，不考虑是否为同一父级地图)
         /// </summary>
@@ -109,12 +120,20 @@ namespace KQ.Model
         /// <returns>是否重合</returns>
         public bool CheckIsOverlapped(MapBlock other)
         {
+            if (other.OwningMap != this.OwningMap)
+            {
+                return false;
+            }
+
             if (other.MaxX < this.MinX || other.MinX > this.MaxX ||
                 other.MaxY < this.MinY || other.MinY > this.MaxY)
+            {
                 return false;
+            }
 
             return true;
         }
+
         #endregion
     }
 }

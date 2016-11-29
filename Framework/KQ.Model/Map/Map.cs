@@ -17,14 +17,14 @@ namespace KQ.Model
         public string Name { get; private set; }
 
         /// <summary>
-        /// 地图位置，按所有区块的包围盒的坐标进行计算
+        /// 地图位置，取所有区块包围盒的左上角单元格坐标（该单元格可能并不存在）
         /// </summary>
-        public MPosition Position { get; private set; }
+        public Vector2D Position { get; private set; }
 
         /// <summary>
-        /// 地图尺寸，按所有区块的包围盒的尺寸进行计算
+        /// 地图尺寸，取所有区块包围盒的尺寸
         /// </summary>
-        public MSize Size { get; private set; }
+        public Vector2D Size { get; private set; }
 
         /// <summary>
         /// 区块列表
@@ -45,26 +45,37 @@ namespace KQ.Model
         }
 
         /// <summary>
-        /// 添加新的区块
+        /// 扩展区块
         /// </summary>
-        /// <param name="newBlock">新的区块</param>
-        /// <returns>是否成功添加</returns>
-        public bool AddBlock(MapBlock newBlock)
+        /// <param name="x">区块位置的X坐标</param>
+        /// <param name="y">区块位置的Y坐标</param>
+        /// <param name="w">区块的宽度</param>
+        /// <param name="h">区块的高度</param>
+        /// <returns>是否扩展成功</returns>
+        public bool AppendBlock(int x, int y, int w, int h)
         {
-            if (!newBlock.Size.IsValid)
-                return false;
+            return AppendBlock(new Vector2D(x, y), new Vector2D(w, h));
+        }
+
+        /// <summary>
+        /// 扩展区块
+        /// </summary>
+        /// <param name="position">区块的位置</param>
+        /// <param name="size">区块的尺寸</param>
+        /// <returns>是否扩展成功</returns>
+        public bool AppendBlock(Vector2D position, Vector2D size)
+        {
+            MapBlock newBlock = new MapBlock(this, position, size);
 
             //如果新的区块和已有区块重合，则不添加
-            foreach(MapBlock block in blockList)
+            foreach (MapBlock block in blockList)
             {
                 if (block.CheckIsOverlapped(newBlock))
                     return false;
             }
 
-            newBlock.ParentMap = this;
             blockList.Add(newBlock);
             RefreshPositionAndSize();
-
             return true;
         }
 
@@ -75,8 +86,8 @@ namespace KQ.Model
         {
             if (blockList.Count == 0)
             {
-                Position = new MPosition();
-                Size = new MSize();
+                Position = Vector2D.GetOrigin();
+                Size = Vector2D.GetOrigin();
                 return;
             }
 
@@ -96,8 +107,8 @@ namespace KQ.Model
                     maxY = block.MaxY;
             }
 
-            Position = new MPosition(minX, minY);
-            Size = new MSize((maxX - minX), (maxY - minY));
+            Position = new Vector2D(minX, minY);
+            Size = new Vector2D((maxX - minX + 1), (maxY - minY + 1));
         }
 
 

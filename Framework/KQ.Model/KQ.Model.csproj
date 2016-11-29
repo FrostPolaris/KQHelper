@@ -39,8 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\MPosition.cs" />
-    <Compile Include="Base\MSize.cs" />
+    <Compile Include="Base\Vector2D.cs" />
     <Compile Include="Base\NotificationObject.cs" />
     <Compile Include="Map\Map.cs" />
     <Compile Include="Map\MapCell.cs" />
