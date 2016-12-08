@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KQ.Basic\KQ.Basic.csproj">
+      <Project>{e3ac7c0f-5824-417f-92f6-b3e0ee0bfbd2}</Project>
+      <Name>KQ.Basic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KQ.Model\KQ.Model.csproj">
       <Project>{60dcf2e0-6c07-4afe-99b8-bac8d98e2d39}</Project>
       <Name>KQ.Model</Name>
