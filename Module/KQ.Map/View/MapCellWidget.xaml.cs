@@ -21,24 +21,23 @@ namespace KQ.MapPanel
     /// </summary>
     public partial class MapCellWidget : UserControl
     {
-        /// <summary>
-        /// 单元格边长（单位：像素）
-        /// </summary>
-        public const int CellLenght = 50;
-
         private MapCell relatedMapCell;
-
-        public MapCellWidget()
-        {
-            InitializeComponent();
-            Border_Root.Width = Border_Root.Height = CellLenght - 2;
-        }
 
         public MapCellWidget(MapCell cell)
         {
             InitializeComponent();
+
             relatedMapCell = cell;
-            Border_Root.Width = Border_Root.Height = CellLenght - 2;
+            InitializeWidget();
+        }
+
+        /// <summary>
+        /// 初始化控件
+        /// </summary>
+        private void InitializeWidget()
+        {
+            Border_Root.Width = Border_Root.Height = MapStyle.CellLenght - 2;
+            Grid_BG.Background = MapStyle.GetCellBrush(relatedMapCell.TerrianType);
         }
     }
 }

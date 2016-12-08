@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KQ.MapPanel"
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="60">
+             d:DesignHeight="50" d:DesignWidth="50">
     <Border x:Name="Border_Root" BorderBrush="Black" BorderThickness="1" Margin="1">
         <Grid x:Name="Grid_BG" Background="#FFE9F5DD">
         </Grid>

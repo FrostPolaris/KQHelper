@@ -17,6 +17,11 @@ namespace KQ.Model
         public Vector2D Position { get; private set; }
 
         /// <summary>
+        /// 地形类型
+        /// </summary>
+        public ETerrianType TerrianType { get; set; }
+
+        /// <summary>
         /// 持有自身的MapBlock
         /// </summary>
         public MapBlock OwningBlock { get; internal set; }

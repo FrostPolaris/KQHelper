@@ -35,17 +35,17 @@ namespace KQ.MapPanel
 
         public void Initialize(Map map)
         {
-            Canvas_Root.Width = MapCellWidget.CellLenght * map.Size.X + 10;
-            Canvas_Root.Height = MapCellWidget.CellLenght * map.Size.Y + 10;
+            Canvas_Root.Width = MapStyle.CellLenght * map.Size.X + 10;
+            Canvas_Root.Height = MapStyle.CellLenght * map.Size.Y + 10;
 
             foreach (MapBlock block in map.BlockList)
             {
                 MapBlockWidget blockWidget = new MapBlockWidget(block);
                 Canvas_Root.Children.Add(blockWidget);
-                Canvas.SetLeft(blockWidget, (block.Position.X - map.Position.X) * MapCellWidget.CellLenght);
-                Canvas.SetRight(blockWidget, (block.Position.X + block.Size.X - map.Position.X) * MapCellWidget.CellLenght);
-                Canvas.SetTop(blockWidget, (block.Position.Y - map.Position.Y) * MapCellWidget.CellLenght);
-                Canvas.SetBottom(blockWidget, (block.Position.Y + block.Size.Y - map.Position.Y) * MapCellWidget.CellLenght);
+                Canvas.SetLeft(blockWidget, (block.Position.X - map.Position.X) * MapStyle.CellLenght);
+                Canvas.SetRight(blockWidget, (block.Position.X + block.Size.X - map.Position.X) * MapStyle.CellLenght);
+                Canvas.SetTop(blockWidget, (block.Position.Y - map.Position.Y) * MapStyle.CellLenght);
+                Canvas.SetBottom(blockWidget, (block.Position.Y + block.Size.Y - map.Position.Y) * MapStyle.CellLenght);
             }
         }
     }
