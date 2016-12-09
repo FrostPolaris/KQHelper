@@ -12,6 +12,7 @@ namespace KQ.Core
     public enum EModuleType
     {
         Map,
+        Menu,
         StatusBar,
     }
 }

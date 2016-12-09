@@ -10,27 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KQ.Core
+namespace KQ.Menu
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// MainMenu.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainMenu : UserControl
     {
-        public MainWindow()
+        public MainMenu()
         {
             InitializeComponent();
-
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            Border_Menu.Child = Services.Module.GetWidget(EModuleType.Menu);
-            Border_Map.Child = Services.Module.GetWidget(EModuleType.Map);
-            Border_Status.Child = Services.Module.GetWidget(EModuleType.StatusBar);
         }
     }
 }

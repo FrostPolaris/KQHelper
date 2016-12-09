@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using KQ.Game;
 
 namespace KQ.Core
@@ -33,6 +30,8 @@ namespace KQ.Core
         /// <param name="allModules">所有的模块</param>
         public static void Initialize(IReadOnlyCollection<IModule> allModules)
         {
+            GlobalCommands.Initialize();
+
             Game = GameService.Instance;
             Game.Initialize();
 
@@ -41,6 +40,8 @@ namespace KQ.Core
 
             TheMainWindow = new MainWindow();
             TheMainWindow.Show();
+
+            CommandService.Initialize();
         }
     }
 }

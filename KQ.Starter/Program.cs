@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using KQ.Core;
 using KQ.MapPanel;
+using KQ.Menu;
 using KQ.StatusBar;
 
 namespace KQ.Starter
@@ -28,6 +29,7 @@ namespace KQ.Starter
             List<IModule> allModules = new List<IModule>();
             allModules.Add(new StatusBarModule());
             allModules.Add(new MapModule());
+            allModules.Add(new MenuModule());
 
             Services.Initialize(allModules);
             Services.TheMainWindow.Closed += MainWindowClosedHandler;

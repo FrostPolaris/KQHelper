@@ -4,14 +4,12 @@
         Title="MainWindow" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid x:Name="GridMainCanvas" Grid.Row="0">
-            
-        </Grid>
-        <Grid x:Name="GridStatusBar" Grid.Row="1">
-            
-        </Grid>
+        <Border x:Name="Border_Menu" Grid.Row="0" />
+        <Border x:Name="Border_Map" Grid.Row="1" />
+        <Border x:Name="Border_Status" Grid.Row="2" />
     </Grid>
 </Window>

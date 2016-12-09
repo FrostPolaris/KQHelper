@@ -8,7 +8,7 @@ using System.Windows.Controls;
 namespace KQ.Core
 {
     /// <summary>
-    /// 带有UI部件的模块
+    /// 主窗口部件接口
     /// </summary>
     public interface IWidgetModule : IModule
     {

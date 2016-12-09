@@ -41,6 +41,27 @@ namespace KQ.Core
         }
 
         /// <summary>
+        /// 获取指定类型的所有模块
+        /// </summary>
+        /// <typeparam name="T">想要获取的模块类型</typeparam>
+        /// <returns>指定类型的所有模块</returns>
+        public IEnumerable<T> GetAllModules<T>()
+            where T : class, IModule
+        {
+            List<T> resList = new List<T>();
+            foreach(IModule module in allModules)
+            {
+                T targetModule = module as T;
+                if (targetModule != null)
+                {
+                    resList.Add(targetModule);
+                }
+            }
+
+            return resList;
+        }
+
+        /// <summary>
         /// 获取部件
         /// </summary>
         /// <param name="moduleType">部件所在模块的模块类型</param>
