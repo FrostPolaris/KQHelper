@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KQ.Basic
 {
@@ -12,6 +9,11 @@ namespace KQ.Basic
     /// </summary>
     public static class AppInfo
     {
+        /// <summary>
+        /// 当前软件模式
+        /// </summary>
+        public static EAppMode CurrentMode { get; private set; }
+
         /// <summary>
         /// 模拟器版本号
         /// </summary>
@@ -29,36 +31,30 @@ namespace KQ.Basic
         private const string logFolderName = "Logs";
 
         /// <summary>
-        /// 静态构造
+        /// 初始化
         /// </summary>
-        static AppInfo()
+        /// <param name="appMode">软件的模式</param>
+        public static void Initialize(EAppMode appMode)
         {
             try
             {
-                Initialize();
+                CurrentMode = appMode;
+                AssemblyDir = AppDomain.CurrentDomain.BaseDirectory;
+
+                List<string> dirList = new List<string>();
+                LogDir = Path.Combine(AssemblyDir, logFolderName);
+                dirList.Add(LogDir);
+
+                foreach (string dir in dirList)
+                {
+                    if (!Directory.Exists(dir))
+                        Directory.CreateDirectory(dir);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("初始化AppInfo失败。\r\n");
                 Console.WriteLine(ex);
-            }
-        }
-
-        /// <summary>
-        /// 初始化
-        /// </summary>
-        private static void Initialize()
-        {
-            AssemblyDir = AppDomain.CurrentDomain.BaseDirectory;
-
-            List<string> dirList = new List<string>();
-            LogDir = Path.Combine(AssemblyDir, logFolderName);
-            dirList.Add(LogDir);
-
-            foreach (string dir in dirList)
-            {
-                if (!Directory.Exists(dir))
-                    Directory.CreateDirectory(dir);
             }
         }
     }

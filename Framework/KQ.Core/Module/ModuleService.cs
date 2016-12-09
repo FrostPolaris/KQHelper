@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -20,13 +21,12 @@ namespace KQ.Core
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="modules">需要注册的模块</param>
-        public void Initialize(IReadOnlyCollection<IModule> modules)
+        public void Initialize(IReadOnlyCollection<IModule> moduleList)
         {
-            foreach (IModule module in modules)
+            foreach(IModule module in moduleList)
             {
-                allModules.Add(module);
                 module.Initialize();
+                allModules.Add(module);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using KQ.Basic;
 using KQ.Core;
 using KQ.MapPanel;
 using KQ.Menu;
@@ -19,20 +20,31 @@ namespace KQ.Starter
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            InitializeService();
+            InitializeAsEditorMode();
+            Services.TheMainWindow.Closed += MainWindowClosedHandler;
 
             Application.Run();
         }
 
-        private static void InitializeService()
+        /// <summary>
+        /// 以“Game”模式初始化
+        /// </summary>
+        private static void InitializeAsGameMode()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 以“Editor”模式初始化
+        /// </summary>
+        private static void InitializeAsEditorMode()
         {
             List<IModule> allModules = new List<IModule>();
             allModules.Add(new StatusBarModule());
             allModules.Add(new MapModule());
             allModules.Add(new MenuModule());
 
-            Services.Initialize(allModules);
-            Services.TheMainWindow.Closed += MainWindowClosedHandler;
+            Services.Initialize(EAppMode.Editor, allModules);
         }
 
         private static void MainWindowClosedHandler(object sender, EventArgs e)

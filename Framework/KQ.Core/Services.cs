@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using KQ.Basic;
 using KQ.Game;
 
 namespace KQ.Core
@@ -27,9 +28,11 @@ namespace KQ.Core
         /// <summary>
         /// 初始化服务
         /// </summary>
+        /// <param name="appMode">软件模式</param>
         /// <param name="allModules">所有的模块</param>
-        public static void Initialize(IReadOnlyCollection<IModule> allModules)
+        public static void Initialize(EAppMode appMode, IReadOnlyCollection<IModule> allModules)
         {
+            AppInfo.Initialize(appMode);
             GlobalCommands.Initialize();
 
             Game = GameService.Instance;
