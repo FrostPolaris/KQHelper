@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KQ.Model.Data;
 
 namespace KQ.Model
 {
@@ -122,5 +123,21 @@ namespace KQ.Model
 
             return sb.ToString();
         }
+
+        #region 反序列化
+
+        internal static Map FromDataMap(DataMap dMap)
+        {
+            Map map = new Map(dMap.Name);
+            foreach (DataMapBlock dBlock in dMap.BlockList)
+            {
+                MapBlock block = MapBlock.FromDataMapBlock(dBlock, map);
+                map._blockList.Add(block);
+            }
+            map.RefreshPositionAndSize();
+            return map;
+        }
+
+        #endregion
     }
 }

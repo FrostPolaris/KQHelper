@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using KQ.Basic;
 using KQ.Game;
+using KQ.Model;
 
 namespace KQ.Core
 {
@@ -21,9 +23,14 @@ namespace KQ.Core
         public static GameService Game { get; private set; }
 
         /// <summary>
+        /// 数据服务
+        /// </summary>
+        public static DataService Data { get; private set; }
+
+        /// <summary>
         /// 主窗口实例
         /// </summary>
-        public static MainWindow TheMainWindow { get; private set; }
+        public static Window TheMainWindow { get; private set; }
 
         /// <summary>
         /// 初始化服务
@@ -41,8 +48,15 @@ namespace KQ.Core
             Module = new ModuleService();
             Module.Initialize(allModules);
 
-            TheMainWindow = new MainWindow();
-            TheMainWindow.Show();
+            Data = DataService.Instance;
+
+            switch (appMode)
+            {
+                case EAppMode.Editor:
+                    TheMainWindow = new EditorMainWindow();
+                    TheMainWindow.Show();
+                    break;
+            }
 
             CommandService.Initialize();
         }

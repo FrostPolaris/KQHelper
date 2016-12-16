@@ -54,8 +54,8 @@
     <Compile Include="Command\ICommandModule.cs" />
     <Compile Include="MainWindow\IWidgetModule.cs" />
     <Compile Include="Module\IModule.cs" />
-    <Compile Include="MainWindow\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MainWindow\EditorMainWindow.xaml.cs">
+      <DependentUpon>EditorMainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -83,7 +83,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainWindow\MainWindow.xaml">
+    <Page Include="MainWindow\EditorMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

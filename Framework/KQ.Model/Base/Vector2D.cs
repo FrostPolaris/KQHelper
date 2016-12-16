@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace KQ.Model
 {
+    [Serializable]
+    [XmlRootAttribute(ElementName = "Vector")]
     public struct Vector2D
     {
-        public int X { get; private set; }
-        public int Y { get; private set; }
+        [XmlAttribute]
+        public int X { get; set; }
+
+        [XmlAttribute]
+        public int Y { get; set; }
 
         public Vector2D(int inX, int inY)
         {
@@ -52,6 +58,35 @@ namespace KQ.Model
         public override string ToString()
         {
             return string.Format("{0}, {1}", X, Y);
+        }
+
+        /// <summary>
+        /// 从字符串转换成Vector2D对象
+        /// </summary>
+        /// <param name="dataString">包含了数据信息的字符串</param>
+        /// <returns>根据字符串转换出来的Vector2D对象，转换失败时返回空</returns>
+        public static Vector2D? FromString(string dataString)
+        {
+            if(string.IsNullOrWhiteSpace(dataString))
+            {
+                return null;
+            }
+
+            string[] strArray = dataString.Replace(" ", "").Split(',');
+            if (strArray.Length != 2)
+            {
+                return null;
+            }
+
+            int x, y;
+            if (!int.TryParse(strArray[0], out x) || !int.TryParse(strArray[1], out y))
+            {
+                return null;
+            }
+            else
+            {
+                return new Vector2D(x, y);
+            }
         }
     }
 }

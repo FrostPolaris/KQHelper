@@ -28,7 +28,11 @@ namespace KQ.Basic
         /// 日志所在目录
         /// </summary>
         public static string LogDir { get; private set; }
-        private const string logFolderName = "Logs";
+
+        /// <summary>
+        /// 数据目录
+        /// </summary>
+        public static string DataDir { get; private set; }
 
         /// <summary>
         /// 初始化
@@ -42,8 +46,10 @@ namespace KQ.Basic
                 AssemblyDir = AppDomain.CurrentDomain.BaseDirectory;
 
                 List<string> dirList = new List<string>();
-                LogDir = Path.Combine(AssemblyDir, logFolderName);
+                LogDir = Path.Combine(AssemblyDir, "Logs");
+                DataDir = Path.Combine(AssemblyDir, "Data");
                 dirList.Add(LogDir);
+                dirList.Add(DataDir);
 
                 foreach (string dir in dirList)
                 {

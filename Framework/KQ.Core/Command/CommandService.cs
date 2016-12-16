@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using KQ.Model;
 
 namespace KQ.Core
 {
@@ -51,6 +53,10 @@ namespace KQ.Core
             CommandBinding aboutBinding = new CommandBinding(GlobalCommands.About);
             aboutBinding.Executed += AboutBinding_Executed;
             cmdBindCollection.Add(aboutBinding);
+
+            CommandBinding generateTestBinding = new CommandBinding(GlobalCommands.GenerateTestData);
+            generateTestBinding.Executed += GenerateTestBinding_Executed;
+            cmdBindCollection.Add(generateTestBinding);
         }
 
         /// <summary>
@@ -70,35 +76,17 @@ namespace KQ.Core
 
         private static void LoadBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            //Services.TheTemplateService.Load();
-            //Logger.Info("模板加载完成。");
+            Services.Data.LoadAll();
         }
 
         private static void SaveBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            //Services.GetService<IPropertyGridService>().ForceApply();
-
-            //ProcessLogger logger = new ProcessLogger();
-            //if (!Services.TheTemplateService.Validate(logger))
-            //{
-            //    StringBuilder sb = new StringBuilder();
-            //    sb.AppendLine("模板数据未能通过合法性校验，具体错误如下：");
-            //    foreach (string log in logger.Logs)
-            //    {
-            //        sb.AppendLine(log);
-            //    }
-            //    Logger.Error(sb.ToString());
-            //}
-            //else
-            //{
-            //    Services.TheTemplateService.Save();
-            //    Logger.Info("模板保存完成。");
-            //}
+            Services.Data.SaveAll();
         }
 
         private static void SaveBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            //e.CanExecute = true;
+            e.CanExecute = true;
         }
 
         private static void QuitBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -116,6 +104,17 @@ namespace KQ.Core
             //AboutWindow wnd = new AboutWindow();
             //wnd.Owner = Services.TheMainWindow;
             //wnd.ShowDialog();
+        }
+
+        private static void GenerateTestBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Map testMap = new Map("测试地图");
+            testMap.AppendBlock(0, 0, 8, 8);
+            testMap.AppendBlock(0, 8, 8, 8);
+            testMap.AppendBlock(8, 0, 8, 8);
+            testMap.AppendBlock(8, 8, 8, 8);
+
+            Services.Data.Maps.Add(testMap);
         }
 
         #endregion

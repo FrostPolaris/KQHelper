@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KQ.Model.Data;
 
 namespace KQ.Model
 {
@@ -15,12 +16,12 @@ namespace KQ.Model
         /// <summary>
         /// 区块在父级Map中的位置（左上角单元格的位置）
         /// </summary>
-        public Vector2D Position { get; private set; }
+        public Vector2D Position { get; internal set; }
 
         /// <summary>
         /// 区块的尺寸
         /// </summary>
-        public Vector2D Size { get; private set; }
+        public Vector2D Size { get; internal set; }
 
         /// <summary>
         /// 所占区域的最小X坐标
@@ -57,7 +58,7 @@ namespace KQ.Model
         /// <summary>
         /// 父级地图
         /// </summary>
-        public Map OwningMap { get; private set; }
+        public Map OwningMap { get; internal set; }
 
         /// <summary>
         /// 单元格列表
@@ -151,6 +152,37 @@ namespace KQ.Model
 
             return true;
         }
+
+        #endregion
+
+        #region 反序列化
+
+        /// <summary>
+        /// 根据DataMapBlock对象进行反序列化
+        /// </summary>
+        /// <param name="dBlock">DataMapBlock对象</param>
+        /// <param name="owningMap">区块的持有地图</param>
+        /// <returns>创建出来的MapBlock对象</returns>
+        internal static MapBlock FromDataMapBlock(DataMapBlock dBlock, Map owningMap)
+        {
+            MapBlock block = new MapBlock();
+            block.Position = new Vector2D(dBlock.PosX, dBlock.PosY);
+            block.Size = new Vector2D(dBlock.SizeX, dBlock.SizeY);
+            block.OwningMap = owningMap;
+
+            List<DataMapCell> dataCellList = dBlock.GetAllMapCell();
+            foreach (DataMapCell dCell in dataCellList)
+            {
+                block.mapCellList.Add(MapCell.FromDataMapCell(dCell, block));
+            }
+            
+            return block;
+        }
+
+        /// <summary>
+        /// 构造函数，供反序列化使用
+        /// </summary>
+        private MapBlock() { }
 
         #endregion
     }
