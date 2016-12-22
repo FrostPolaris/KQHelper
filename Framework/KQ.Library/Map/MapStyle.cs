@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using KQ.Model;
 
-namespace KQ.MapPanel
+namespace KQ.Library
 {
     /// <summary>
     /// 地图样式

@@ -28,9 +28,9 @@ namespace KQ.Core
 
         private void Initialize()
         {
-            Border_Menu.Child = Services.Module.GetWidget(EModuleType.Menu);
-            Border_Map.Child = Services.Module.GetWidget(EModuleType.Map);
-            Border_Status.Child = Services.Module.GetWidget(EModuleType.StatusBar);
+            Border_Menu.Child = Services.Module.GetWidget(EModuleType.EditorMenu);
+            Border_Map.Child = Services.Module.GetWidget(EModuleType.EditorMap);
+            Border_Status.Child = Services.Module.GetWidget(EModuleType.EditorStatusBar);
         }
     }
 }

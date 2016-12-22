@@ -11,8 +11,25 @@ namespace KQ.Core
     /// </summary>
     public enum EModuleType
     {
-        Map,
-        Menu,
-        StatusBar,
+        #region 通用
+
+
+
+        #endregion
+
+        #region 游戏
+
+
+        #endregion
+
+        #region 编辑器
+
+        EditorMenu,
+        EditorStatusBar,
+        EditorBrowser,
+        EditorMap,
+
+        #endregion
+
     }
 }

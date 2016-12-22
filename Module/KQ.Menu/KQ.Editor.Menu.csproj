@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7942EBA5-5C3C-46C0-8BE1-F486EEBBF7D5}</ProjectGuid>
+    <ProjectGuid>{39896D83-32AE-4739-99BD-B62FB18FC437}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KQ.MapPanel</RootNamespace>
-    <AssemblyName>KQ.MapPanel</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>KQ.Editor.Menu</RootNamespace>
+    <AssemblyName>KQ.Editor.Menu</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -49,39 +49,16 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\MapBlockWidget.xaml">
+    <Page Include="MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MapCellWidget.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="MapStyle.cs" />
-    <Compile Include="View\MapBlockWidget.xaml.cs">
-      <DependentUpon>MapBlockWidget.xaml</DependentUpon>
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MapCellWidget.xaml.cs">
-      <DependentUpon>MapCellWidget.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="View\MapPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MapWidget.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapModule.cs" />
-    <Compile Include="View\MapPanel.xaml.cs">
-      <DependentUpon>MapPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MapWidget.xaml.cs">
-      <DependentUpon>MapWidget.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="MenuModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -106,17 +83,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\KQ.Basic\KQ.Basic.csproj">
+      <Project>{e3ac7c0f-5824-417f-92f6-b3e0ee0bfbd2}</Project>
+      <Name>KQ.Basic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Framework\KQ.Core\KQ.Core.csproj">
       <Project>{6c2c5d8a-64ff-48da-a7f3-639393f8e560}</Project>
       <Name>KQ.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Framework\KQ.Game\KQ.Game.csproj">
-      <Project>{98158457-bc19-4977-b5f5-de571628485e}</Project>
-      <Name>KQ.Game</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Framework\KQ.Model\KQ.Model.csproj">
-      <Project>{60dcf2e0-6c07-4afe-99b8-bac8d98e2d39}</Project>
-      <Name>KQ.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

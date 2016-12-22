@@ -5,9 +5,9 @@ using System.IO;
 namespace KQ.Basic
 {
     /// <summary>
-    /// 软件信息类
+    /// 软件配置类
     /// </summary>
-    public static class AppInfo
+    public static class AppConfig
     {
         /// <summary>
         /// 当前软件模式

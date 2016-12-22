@@ -36,7 +36,7 @@ namespace KQ.Basic
         {
             string curTime = System.DateTime.Now.ToString();
             string fileName = string.Format("Log {0}.txt", curTime.Replace("/", "_").Replace(":", "."));
-            filePath = Path.Combine(AppInfo.LogDir, fileName);
+            filePath = Path.Combine(AppConfig.LogDir, fileName);
         }
 
         #endregion

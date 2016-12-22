@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using KQ.Core;
 
-namespace KQ.StatusBar
+namespace KQ.Editor.StatusBar
 {
     /// <summary>
     /// 状态栏模块
@@ -15,7 +15,7 @@ namespace KQ.StatusBar
     {
         EModuleType IModule.ModuleType
         {
-            get { return EModuleType.StatusBar; }
+            get { return EModuleType.EditorStatusBar; }
         }
 
         private StatusBar theStatusBar = new StatusBar();

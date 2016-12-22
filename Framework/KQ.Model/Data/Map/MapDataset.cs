@@ -16,7 +16,7 @@ namespace KQ.Model
 
         static MapDataset()
         {
-            filePath = Path.Combine(AppInfo.DataDir, "MapData.xml");
+            filePath = Path.Combine(AppConfig.DataDir, "MapData.xml");
         }
 
         public IReadOnlyList<Map> AllData

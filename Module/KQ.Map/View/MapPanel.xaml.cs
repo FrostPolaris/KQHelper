@@ -13,8 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KQ.Core;
+using KQ.Library;
 
-namespace KQ.MapPanel
+namespace KQ.Editor.MapPanel
 {
     /// <summary>
     /// MapPanel.xaml 的交互逻辑

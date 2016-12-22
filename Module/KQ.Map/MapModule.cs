@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using KQ.Core;
 
-namespace KQ.MapPanel
+namespace KQ.Editor.MapPanel
 {
     public class MapModule : IWidgetModule
     {
         EModuleType IModule.ModuleType
         {
-            get { return EModuleType.Map; }
+            get { return EModuleType.EditorMap; }
         }
 
         private MapPanel mapPanel = new MapPanel();

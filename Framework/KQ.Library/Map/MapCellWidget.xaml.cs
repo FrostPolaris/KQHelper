@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KQ.Model;
 
-namespace KQ.MapPanel
+namespace KQ.Library
 {
     /// <summary>
     /// 地图单元格控件

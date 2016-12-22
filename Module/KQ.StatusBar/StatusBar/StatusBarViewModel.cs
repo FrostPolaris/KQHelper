@@ -7,7 +7,7 @@ using KQ.Core;
 using KQ.Game;
 using KQ.Model;
 
-namespace KQ.StatusBar
+namespace KQ.Editor.StatusBar
 {
     class StatusBarViewModel
     {

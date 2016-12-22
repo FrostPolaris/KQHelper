@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using KQ.Basic;
 using KQ.Core;
-using KQ.MapPanel;
-using KQ.Menu;
-using KQ.StatusBar;
+using KQ.Editor.MapPanel;
+using KQ.Editor.Menu;
+using KQ.Editor.StatusBar;
 
 namespace KQ.Starter
 {

@@ -12,21 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using KQ.Core;
 
-namespace KQ.Editor.StatusBar
+namespace KQ.Editor.Browser
 {
-    /// <summary>
-    /// UserControl1.xaml 的交互逻辑
-    /// </summary>
-    public partial class StatusBar : UserControl
+    public partial class DataBrowser : UserControl
     {
-
-        public StatusBar()
+        public DataBrowser()
         {
             InitializeComponent();
-            this.DataContext = new StatusBarViewModel();
         }
-
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KQ.Menu
+namespace KQ.Editor.Menu
 {
     /// <summary>
     /// MainMenu.xaml 的交互逻辑

@@ -39,7 +39,7 @@ namespace KQ.Core
         /// <param name="allModules">所有的模块</param>
         public static void Initialize(EAppMode appMode, IReadOnlyCollection<IModule> allModules)
         {
-            AppInfo.Initialize(appMode);
+            AppConfig.Initialize(appMode);
             GlobalCommands.Initialize();
 
             Game = GameService.Instance;
