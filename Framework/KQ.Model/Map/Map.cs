@@ -122,7 +122,7 @@ namespace KQ.Model
             Map map = new Map();
             map.Name = dMap.Name;
             map.Size = new Vector2D(dMap.SizeX, dMap.SizeY);
-            foreach (DataMapCell dCell in dMap.CellList)
+            foreach (DataMapCell dCell in dMap.GetCellList())
             {
                 MapCell cell = MapCell.FromDataMapCell(dCell, map);
                 map._cellList.Add(cell);

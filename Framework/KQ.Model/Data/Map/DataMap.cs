@@ -21,8 +21,11 @@ namespace KQ.Model.Data
         [XmlAttribute]
         public int SizeY;
 
+        /// <summary>
+        /// 这里只保存非默认值的单元格
+        /// </summary>
         [XmlArray]
-        public List<DataMapCell> CellList = new List<DataMapCell>();
+        public List<DataMapCell> NonDefaultCellList = new List<DataMapCell>();
 
         public DataMap()
         {
@@ -33,11 +36,40 @@ namespace KQ.Model.Data
             this.Name = map.Name;
             this.SizeX = map.Size.X;
             this.SizeY = map.Size.Y;
+
             foreach (MapCell cell in map.CellList)
             {
-                CellList.Add(new DataMapCell(cell));
+                DataMapCell dCell = new DataMapCell(cell);
+                if (!dCell.CheckIsDefault())
+                {
+                    NonDefaultCellList.Add(dCell);
+                }
             }
         }
 
+        /// <summary>
+        /// 获取完整的单元格列表
+        /// </summary>
+        /// <returns>完整的单元格列表</returns>
+        public List<DataMapCell> GetCellList()
+        {
+            List<DataMapCell> cellList = new List<DataMapCell>();
+            for (int x = 0; x < SizeX; x++)
+            {
+                for (int y = 0; y < SizeY; y++)
+                {
+                    DataMapCell dCell = NonDefaultCellList.Find(c => c.PosX == x && c.PosY == y);
+                    if (dCell == null)
+                    {
+                        dCell = new DataMapCell();
+                        dCell.PosX = x;
+                        dCell.PosY = y;
+                    }
+                    cellList.Add(dCell);
+                }
+            }
+
+            return cellList;
+        }
     }
 }
