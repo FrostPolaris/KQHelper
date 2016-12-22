@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using KQ.Basic;
 using KQ.Core;
+using KQ.Editor.Browser;
 using KQ.Editor.MapPanel;
 using KQ.Editor.Menu;
+using KQ.Editor.PropertyPanel;
 using KQ.Editor.StatusBar;
+using KQ.Output;
 
 namespace KQ.Starter
 {
@@ -43,6 +46,9 @@ namespace KQ.Starter
             allModules.Add(new StatusBarModule());
             allModules.Add(new MapModule());
             allModules.Add(new MenuModule());
+            allModules.Add(new BrowserModule());
+            allModules.Add(new PropertyModule());
+            allModules.Add(new OutputModule());
 
             Services.Initialize(EAppMode.Editor, allModules);
         }

@@ -5,8 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KQ.Editor.Browser"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="300" d:DesignWidth="200">
+    <Border Background="#FFEDF4F9" BorderBrush="#FF3C3C3C" BorderThickness="1" Margin="4">
+        <Grid x:Name="Grid_Task" Margin="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label x:Name="Label_Title" Content="地图列表" DockPanel.Dock="Right" />
+            <ListBox x:Name="ListBox_MapItems" Grid.Row="1" Height="Auto" ItemsSource="{Binding Path=AllTemplates}" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <TextBlock Text="[" />
+                            <TextBlock Text="{Binding DisplayName}" />
+                            <TextBlock Text="]  ID: " />
+                            <TextBlock Text="{Binding Id}" />
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <DockPanel Grid.Row="2" Margin="0,4,0,2">
+                <Button x:Name="Button_Delete" Content=" 删除 " DockPanel.Dock="Right" Margin="2,0" Focusable="False"/>
+                <Button x:Name="Button_Create" Content=" 创建 " DockPanel.Dock="Right" Margin="2,0" HorizontalAlignment="Right" Focusable="False"/>
+            </DockPanel>
+        </Grid>
+    </Border>
 </UserControl>

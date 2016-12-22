@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using KQ.Core;
 
-namespace KQ.Editor.Browser
+namespace KQ.Editor.PropertyPanel
 {
-    public class BrowserModule : IWidgetModule
+    public class PropertyModule : IWidgetModule
     {
         public EModuleType ModuleType
         {
-            get { return EModuleType.EditorBrowser; }
+            get { return EModuleType.EditorProperty; }
         }
 
-        private DataBrowser theBrowserWidget;
+        private PropertyPanelWidget propertyWidget;
 
         public UserControl GetWidget()
         {
-            return theBrowserWidget;
+            return propertyWidget;
         }
 
         public void Initialize()
         {
-            theBrowserWidget = new DataBrowser();
+            propertyWidget = new PropertyPanelWidget();
         }
     }
 }

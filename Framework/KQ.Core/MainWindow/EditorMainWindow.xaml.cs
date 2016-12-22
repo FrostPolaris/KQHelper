@@ -22,15 +22,20 @@ namespace KQ.Core
         public EditorMainWindow()
         {
             InitializeComponent();
-
             Initialize();
         }
 
         private void Initialize()
         {
+            this.Width = 1280;
+            this.Height = 960;
+
             Border_Menu.Child = Services.Module.GetWidget(EModuleType.EditorMenu);
             Border_Map.Child = Services.Module.GetWidget(EModuleType.EditorMap);
             Border_Status.Child = Services.Module.GetWidget(EModuleType.EditorStatusBar);
+            Border_Browser.Child = Services.Module.GetWidget(EModuleType.EditorBrowser);
+            Border_Property.Child = Services.Module.GetWidget(EModuleType.EditorProperty);
+            Border_Output.Child = Services.Module.GetWidget(EModuleType.Output);
         }
     }
 }

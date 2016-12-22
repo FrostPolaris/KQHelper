@@ -87,9 +87,21 @@
       <Project>{98158457-bc19-4977-b5f5-de571628485e}</Project>
       <Name>KQ.Game</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework\KQ.Library\KQ.Library.csproj">
+      <Project>{448e30f7-8ff3-4f8d-9f64-ebeae2414b3a}</Project>
+      <Name>KQ.Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework\KQ.Model\KQ.Model.csproj">
       <Project>{60dcf2e0-6c07-4afe-99b8-bac8d98e2d39}</Project>
       <Name>KQ.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Module\KQ.Editor.Browser\KQ.Editor.Browser.csproj">
+      <Project>{faa075fc-a562-4033-9230-5098640d5955}</Project>
+      <Name>KQ.Editor.Browser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Module\KQ.Editor.PropertyPanel\KQ.Editor.PropertyPanel.csproj">
+      <Project>{b30334a6-2ed7-42cf-b57a-d1886eeeda0e}</Project>
+      <Name>KQ.Editor.PropertyPanel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Module\KQ.Map\KQ.Editor.MapPanel.csproj">
       <Project>{7942eba5-5c3c-46c0-8be1-f486eebbf7d5}</Project>
@@ -98,6 +110,10 @@
     <ProjectReference Include="..\Module\KQ.Menu\KQ.Editor.Menu.csproj">
       <Project>{39896d83-32ae-4739-99bd-b62fb18fc437}</Project>
       <Name>KQ.Editor.Menu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Module\KQ.Output\KQ.Output.csproj">
+      <Project>{90e94330-cb26-4623-b762-916eefddd8cc}</Project>
+      <Name>KQ.Output</Name>
     </ProjectReference>
     <ProjectReference Include="..\Module\KQ.StatusBar\KQ.Editor.StatusBar.csproj">
       <Project>{d56af261-0351-406f-8a27-94f2f5216f84}</Project>

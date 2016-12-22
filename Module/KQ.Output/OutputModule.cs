@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using KQ.Core;
 
-namespace KQ.Editor.Browser
+namespace KQ.Output
 {
-    public class BrowserModule : IWidgetModule
+    public class OutputModule : IWidgetModule
     {
         public EModuleType ModuleType
         {
-            get { return EModuleType.EditorBrowser; }
+            get { return EModuleType.Output; }
         }
 
-        private DataBrowser theBrowserWidget;
+        private OutputPanel widget;
 
         public UserControl GetWidget()
         {
-            return theBrowserWidget;
+            return widget;
         }
 
         public void Initialize()
         {
-            theBrowserWidget = new DataBrowser();
+            widget = new OutputPanel();
         }
     }
 }

@@ -21,22 +21,23 @@ namespace KQ.Library
     /// </summary>
     public partial class MapWidget : UserControl
     {
-
-        public MapWidget()
-        {
-            InitializeComponent();
-        }
+        public Map ContentMap { get; private set; }
 
         public MapWidget(Map map)
         {
             InitializeComponent();
-            Initialize(map);
+            Reset(map);
         }
 
-        public void Initialize(Map map)
+        /// <summary>
+        /// 使用新的地图数据重置地图控件
+        /// </summary>
+        /// <param name="map">新的地图数据</param>
+        public void Reset(Map map)
         {
-            Canvas_Root.Width = MapStyle.CellLenght * map.Size.X + 10;
-            Canvas_Root.Height = MapStyle.CellLenght * map.Size.Y + 10;
+            ContentMap = map;
+            Canvas_Root.Width = MapStyle.CellLenght * map.Size.X;
+            Canvas_Root.Height = MapStyle.CellLenght * map.Size.Y;
 
             foreach (MapBlock block in map.BlockList)
             {

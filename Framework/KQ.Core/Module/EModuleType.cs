@@ -13,7 +13,7 @@ namespace KQ.Core
     {
         #region 通用
 
-
+        Output,
 
         #endregion
 
@@ -28,6 +28,7 @@ namespace KQ.Core
         EditorStatusBar,
         EditorBrowser,
         EditorMap,
+        EditorProperty,
 
         #endregion
 

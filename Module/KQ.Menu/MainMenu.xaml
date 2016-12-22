@@ -7,7 +7,7 @@
              xmlns:kqcore="clr-namespace:KQ.Core;assembly=KQ.Core"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300"> 
-    <Border BorderBrush="Black" BorderThickness="0,0,0,1" Background="#FFEAEAEA">
+    <Border>
         <Menu HorizontalAlignment="Stretch" VerticalAlignment="Center" IsMainMenu="True" Background="{x:Null}" Margin="0,2">
             <MenuItem Header="文件(_F)" BorderThickness="0" Margin="0" VerticalAlignment="Center" Height="24">
                 <MenuItem Header="保存(_S)" Command="Save" ToolTip="把所有模板数据保存到本地文件"/>

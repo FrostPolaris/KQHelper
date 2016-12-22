@@ -8,15 +8,13 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border x:Name="Border_Menu" Grid.Row="0" />
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Border x:Name="Border_Browser" Background="#FFEFF7F7" />
-            <Border x:Name="Border_Map" Grid.Column="1" Background="#FFE5EBF7" />
-        </Grid>
-        <Border x:Name="Border_Status" Grid.Row="2" />
+        <Border x:Name="Border_Menu" Grid.Row="0" BorderBrush="Black" BorderThickness="0,0,0,1" />
+        <DockPanel Grid.Row="1">
+            <Border x:Name="Border_Browser" Grid.Column="1" Width="200" BorderThickness="0,0,1,0" BorderBrush="Black" />
+            <Border x:Name="Border_Output" DockPanel.Dock="Bottom" Height="198" VerticalAlignment="Bottom" BorderThickness="0,1,0,0" BorderBrush="Black" />
+            <Border x:Name="Border_Property" Background="#FFE6F7E5" DockPanel.Dock="Right" BorderThickness="1,0,0,0" BorderBrush="Black" HorizontalAlignment="Right" Width="300" />
+            <Border x:Name="Border_Map" Background="#FFE5F3F7" />
+        </DockPanel>
+        <Border x:Name="Border_Status" Grid.Row="2" BorderBrush="Black" BorderThickness="0,1,0,0" />
     </Grid>
 </Window>
