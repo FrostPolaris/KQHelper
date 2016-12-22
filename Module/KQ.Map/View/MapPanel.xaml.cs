@@ -31,8 +31,8 @@ namespace KQ.Editor.MapPanel
         {
             MapWidget mapWidget = new MapWidget(Services.Game.TheGameInstance.CurrentMap);
             Grid_Root.Children.Add(mapWidget);
-            //mapWidget.HorizontalAlignment = HorizontalAlignment.Center;
-            //mapWidget.VerticalAlignment = VerticalAlignment.Center;
+            mapWidget.HorizontalAlignment = HorizontalAlignment.Center;
+            mapWidget.VerticalAlignment = VerticalAlignment.Center;
         }
     }
 }

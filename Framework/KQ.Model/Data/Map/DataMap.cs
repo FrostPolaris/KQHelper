@@ -15,8 +15,14 @@ namespace KQ.Model.Data
         [XmlAttribute]
         public string Name;
 
+        [XmlAttribute]
+        public int SizeX;
+
+        [XmlAttribute]
+        public int SizeY;
+
         [XmlArray]
-        public List<DataMapBlock> BlockList = new List<DataMapBlock>();
+        public List<DataMapCell> CellList = new List<DataMapCell>();
 
         public DataMap()
         {
@@ -25,9 +31,11 @@ namespace KQ.Model.Data
         public DataMap(Map map)
         {
             this.Name = map.Name;
-            foreach (MapBlock block in map.BlockList)
+            this.SizeX = map.Size.X;
+            this.SizeY = map.Size.Y;
+            foreach (MapCell cell in map.CellList)
             {
-                BlockList.Add(new DataMapBlock(block));
+                CellList.Add(new DataMapCell(cell));
             }
         }
 

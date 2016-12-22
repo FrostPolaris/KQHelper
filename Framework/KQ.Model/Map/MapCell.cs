@@ -13,7 +13,7 @@ namespace KQ.Model
     public class MapCell
     {
         /// <summary>
-        /// 单元格的位置（全局坐标）
+        /// 单元格的位置
         /// </summary>
         public Vector2D Position { get; private set; }
 
@@ -23,30 +23,19 @@ namespace KQ.Model
         public ETerrianType TerrianType { get; set; }
 
         /// <summary>
-        /// 持有自身的MapBlock
+        /// 持有自身的地图
         /// </summary>
-        public MapBlock OwningBlock { get; private set; }
+        public Map Owner { get; private set; }
 
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="parent">父级MapBlock</param>
-        /// <param name="x">单元格位置的X坐标</param>
-        /// <param name="y">单元格位置的Y坐标</param>
-        public MapCell(MapBlock parent, int x, int y)
-            : this(parent, new Vector2D(x, y))
+        /// <param name="owner">持有者地图</param>
+        /// <param name="parent">在持有者地图中的位置</param>
+        public MapCell(Map owner, Vector2D position)
         {
-        }
-
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="parent">父级MapBlock</param>
-        /// <param name="position">单元格的位置</param>
-        public MapCell(MapBlock parent, Vector2D position)
-        {
-            Position = position;
-            OwningBlock = parent;
+            this.Owner = owner;
+            this.Position = position;
         }
 
         #region 反序列化
@@ -55,14 +44,14 @@ namespace KQ.Model
         /// 根据DataMapCell对象来创建MapCell对象
         /// </summary>
         /// <param name="dCell">DataMapCell对象</param>
-        /// <param name="owningBlock">单元格的持有区块</param>
+        /// <param name="owner">单元格的持有地图</param>
         /// <returns>创建出来的MapCell对象</returns>
-        internal static MapCell FromDataMapCell(DataMapCell dCell, MapBlock owningBlock)
+        internal static MapCell FromDataMapCell(DataMapCell dCell, Map owner)
         {
             MapCell cell = new MapCell();
             cell.Position = new Vector2D(dCell.PosX, dCell.PosY);
             cell.TerrianType = dCell.TerrianType;
-            cell.OwningBlock = owningBlock;
+            cell.Owner = owner;
             return cell;
         }
 

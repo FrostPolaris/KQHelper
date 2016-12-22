@@ -108,12 +108,7 @@ namespace KQ.Core
 
         private static void GenerateTestBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Map testMap = new Map("测试地图");
-            testMap.AppendBlock(0, 0, 8, 8);
-            testMap.AppendBlock(0, 8, 8, 8);
-            testMap.AppendBlock(8, 0, 8, 8);
-            testMap.AppendBlock(8, 8, 8, 8);
-
+            Map testMap = new Map("测试地图", new Vector2D(12, 12));
             Services.Data.Maps.Add(testMap);
         }
 

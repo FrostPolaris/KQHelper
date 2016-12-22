@@ -18,125 +18,120 @@ namespace KQ.Model
         public string Name { get; private set; }
 
         /// <summary>
-        /// 地图位置，取所有区块包围盒的左上角单元格坐标（该单元格可能并不存在）
-        /// </summary>
-        public Vector2D Position { get; private set; }
-
-        /// <summary>
-        /// 地图尺寸，取所有区块包围盒的尺寸
+        /// 地图的尺寸
         /// </summary>
         public Vector2D Size { get; private set; }
 
         /// <summary>
-        /// 区块列表
+        /// 地图单元格列表
         /// </summary>
-        public IReadOnlyList<MapBlock> BlockList
+        public IReadOnlyList<MapCell> CellList
         {
-            get { return _blockList; }
+            get { return _cellList; }
         }
-        private List<MapBlock> _blockList = new List<MapBlock>();
+        private List<MapCell> _cellList = new List<MapCell>();
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="name">地图名称</param>
-        public Map(string name)
+        /// <param name="w">地图宽度</param>
+        /// <param name="h">地图高度</param>
+        public Map(string name, int w, int h)
+            : this(name, new Vector2D(w, h))
+        { }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="name">地图名称</param>
+        /// <param name="size">地图尺寸</param>
+        public Map(string name, Vector2D size)
         {
             this.Name = name;
+            this.Size = size;
+            if (!Size.IsValidSize())
+            {
+                throw new ArgumentException("使用了非法的地图尺寸：" + size);
+            }
+
+            Initialize();
         }
 
         /// <summary>
-        /// 扩展区块
+        /// 初始化
         /// </summary>
-        /// <param name="x">区块位置的X坐标</param>
-        /// <param name="y">区块位置的Y坐标</param>
-        /// <param name="w">区块的宽度</param>
-        /// <param name="h">区块的高度</param>
-        /// <returns>是否扩展成功</returns>
-        public bool AppendBlock(int x, int y, int w, int h)
+        private void Initialize()
         {
-            return AppendBlock(new Vector2D(x, y), new Vector2D(w, h));
+            _cellList.Clear();
+            for (int x = 0; x < Size.X; x++)
+            {
+                for (int y = 0; y < Size.Y; y++)
+                {
+                    MapCell cell = new MapCell(this, new Vector2D(x, y));
+                    _cellList.Add(cell);
+                }
+            }
         }
 
         /// <summary>
-        /// 扩展区块
+        /// 通过坐标位置获取单元格
         /// </summary>
-        /// <param name="position">区块的位置</param>
-        /// <param name="size">区块的尺寸</param>
-        /// <returns>是否扩展成功</returns>
-        public bool AppendBlock(Vector2D position, Vector2D size)
+        /// <param name="x">X坐标</param>
+        /// <param name="y">Y坐标</param>
+        /// <returns></returns>
+        public MapCell GetCell(int x, int y)
         {
-            MapBlock newBlock = new MapBlock(this, position, size);
-
-            //如果新的区块和已有区块重合，则不添加
-            foreach (MapBlock block in _blockList)
+            if (x < 0 || x >= Size.X || y < 0 || y >= Size.Y)
             {
-                if (block.CheckIsOverlapped(newBlock))
-                    return false;
+                return null;
             }
-
-            _blockList.Add(newBlock);
-            RefreshPositionAndSize();
-            return true;
+            int index = y * Size.X + x;
+            return CellList[index];
         }
 
         /// <summary>
-        /// 刷新位置和尺寸
+        /// 扩展地图尺寸
         /// </summary>
-        private void RefreshPositionAndSize()
+        /// <param name="direction">扩展的方向</param>
+        /// <param name="length">扩展的长度</param>
+        public void AppendSize(EDirection direction, uint length)
         {
-            if (_blockList.Count == 0)
-            {
-                Position = Vector2D.GetOrigin();
-                Size = Vector2D.GetOrigin();
-                return;
-            }
 
-            int minX = _blockList[0].MinX;
-            int minY = _blockList[0].MinY;
-            int maxX = _blockList[0].MaxX;
-            int maxY = _blockList[0].MaxY;
-            foreach (MapBlock block in _blockList)
-            {
-                if (block.MinX < minX)
-                    minX = block.MinX;
-                if (block.MinY < minY)
-                    minY = block.MinY;
-                if (block.MaxX > maxX)
-                    maxX = block.MaxX;
-                if (block.MaxY > maxY)
-                    maxY = block.MaxY;
-            }
-
-            Position = new Vector2D(minX, minY);
-            Size = new Vector2D((maxX - minX + 1), (maxY - minY + 1));
         }
 
+        /// <summary>
+        /// 收缩地图尺寸
+        /// </summary>
+        /// <param name="fromDir">收缩的方向</param>
+        /// <param name="length">收缩的长度</param>
+        public void ShrinkSize(EDirection fromDir, uint length)
+        {
+
+        }
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(string.Format("名称：{0}", Name));
-            sb.Append(string.Format("  坐标：（{0}）", Position));
-            sb.Append(string.Format("  尺寸：({0})", Size));
-            sb.Append(string.Format("  区块数量：{0}", _blockList.Count));
-
-            return sb.ToString();
+            return string.Format("地图：{0}  尺寸：({1})", Name, Size);
         }
 
         #region 反序列化
 
         internal static Map FromDataMap(DataMap dMap)
         {
-            Map map = new Map(dMap.Name);
-            foreach (DataMapBlock dBlock in dMap.BlockList)
+            Map map = new Map();
+            map.Name = dMap.Name;
+            map.Size = new Vector2D(dMap.SizeX, dMap.SizeY);
+            foreach (DataMapCell dCell in dMap.CellList)
             {
-                MapBlock block = MapBlock.FromDataMapBlock(dBlock, map);
-                map._blockList.Add(block);
+                MapCell cell = MapCell.FromDataMapCell(dCell, map);
+                map._cellList.Add(cell);
             }
-            map.RefreshPositionAndSize();
+
             return map;
         }
+
+        private Map() { }
 
         #endregion
     }

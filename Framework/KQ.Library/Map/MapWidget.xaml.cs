@@ -36,17 +36,33 @@ namespace KQ.Library
         public void Reset(Map map)
         {
             ContentMap = map;
-            Canvas_Root.Width = MapStyle.CellLenght * map.Size.X;
-            Canvas_Root.Height = MapStyle.CellLenght * map.Size.Y;
 
-            foreach (MapBlock block in map.BlockList)
+            //为地图设置行列
+            for (int x = 0; x < ContentMap.Size.X; x++)
             {
-                MapBlockWidget blockWidget = new MapBlockWidget(block);
-                Canvas_Root.Children.Add(blockWidget);
-                Canvas.SetLeft(blockWidget, (block.Position.X - map.Position.X) * MapStyle.CellLenght);
-                Canvas.SetRight(blockWidget, (block.Position.X + block.Size.X - map.Position.X) * MapStyle.CellLenght);
-                Canvas.SetTop(blockWidget, (block.Position.Y - map.Position.Y) * MapStyle.CellLenght);
-                Canvas.SetBottom(blockWidget, (block.Position.Y + block.Size.Y - map.Position.Y) * MapStyle.CellLenght);
+                ColumnDefinition colDef = new ColumnDefinition();
+                colDef.Width = GridLength.Auto;
+                Grid_Root.ColumnDefinitions.Add(colDef);
+            }
+            for (int y = 0; y < ContentMap.Size.Y; y++)
+            {
+                RowDefinition rowDef = new RowDefinition();
+                rowDef.Height = GridLength.Auto;
+                Grid_Root.RowDefinitions.Add(rowDef);
+            }
+
+            //向地图中添加单元格
+            for (int x = 0; x < ContentMap.Size.X; x++)
+            {
+                for (int y = 0; y < ContentMap.Size.Y; y++)
+                {
+                    MapCell cell = ContentMap.GetCell(x, y);
+                    MapCellWidget cellWidget = new MapCellWidget(cell);
+                    Grid_Root.Children.Add(cellWidget);
+
+                    Grid.SetColumn(cellWidget, x);
+                    Grid.SetRow(cellWidget, y);
+                }
             }
         }
     }

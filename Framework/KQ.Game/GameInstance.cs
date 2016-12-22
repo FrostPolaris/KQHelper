@@ -31,7 +31,7 @@ namespace KQ.Game
                 return emptyMap;
             }
         }
-        private static Map emptyMap = new Map("空地图");
+        private static Map emptyMap = new Map("空地图", 0, 0);
 
         /// <summary>
         /// 构造函数
@@ -57,12 +57,7 @@ namespace KQ.Game
         /// </summary>
         private void InitWithTestMap()
         {
-            Map testMap = new Map("测试地图");
-            testMap.AppendBlock(0, 0, 8, 8);
-            testMap.AppendBlock(0, 8, 8, 8);
-            testMap.AppendBlock(8, 0, 8, 8);
-            testMap.AppendBlock(8, 8, 8, 8);
-
+            Map testMap = new Map("测试地图", 12, 12);
             mapList.Add(testMap);
         }
     }

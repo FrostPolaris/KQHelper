@@ -33,9 +33,22 @@ namespace KQ.Model
             return new Vector2D(a.X - b.X, a.Y - b.Y);
         }
 
+        /// <summary>
+        /// 获取原点Vector2D
+        /// </summary>
+        /// <returns>原点Vector2D</returns>
         public static Vector2D GetOrigin()
         {
             return new Vector2D(0, 0);
+        }
+
+        /// <summary>
+        /// 判断当前的Vector2D是否能表示一个合法的尺寸
+        /// </summary>
+        /// <returns>当前对象是否能表示一个合法的尺寸</returns>
+        public bool IsValidSize()
+        {
+            return X >= 0 && Y >= 0;
         }
 
         public override bool Equals(object obj)

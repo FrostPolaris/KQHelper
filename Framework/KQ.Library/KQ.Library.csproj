@@ -48,10 +48,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Map\MapBlockWidget.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Map\MapCellWidget.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -60,9 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Map\MapBlockWidget.xaml.cs">
-      <DependentUpon>MapBlockWidget.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Map\MapCellWidget.xaml.cs">
       <DependentUpon>MapCellWidget.xaml</DependentUpon>
     </Compile>

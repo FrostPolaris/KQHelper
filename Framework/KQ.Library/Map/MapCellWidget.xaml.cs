@@ -21,13 +21,13 @@ namespace KQ.Library
     /// </summary>
     public partial class MapCellWidget : UserControl
     {
-        private MapCell relatedMapCell;
+        public MapCell ContentCell { get; private set; }
 
         public MapCellWidget(MapCell cell)
         {
             InitializeComponent();
 
-            relatedMapCell = cell;
+            ContentCell = cell;
             InitializeWidget();
         }
 
@@ -37,7 +37,7 @@ namespace KQ.Library
         private void InitializeWidget()
         {
             Border_Root.Width = Border_Root.Height = MapStyle.CellLenght - 2;
-            Grid_BG.Background = MapStyle.GetCellBrush(relatedMapCell.TerrianType);
+            Grid_BG.Background = MapStyle.GetCellBrush(ContentCell.TerrianType);
         }
     }
 }

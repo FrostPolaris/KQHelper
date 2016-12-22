@@ -12,9 +12,14 @@ namespace KQ.Model
     public enum ETerrianType
     {
         /// <summary>
+        /// 空地形
+        /// </summary>
+        Null = -1,
+
+        /// <summary>
         /// 普通地形
         /// </summary>
-        Normal,
+        Normal = 0,
 
         /// <summary>
         /// 阻断地形（障碍物）

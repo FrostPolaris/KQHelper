@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:KQ.Editor.MapPanel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <ScrollViewer HorizontalScrollBarVisibility="Visible">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid x:Name="Grid_Root" Margin="12">
         </Grid>
     </ScrollViewer>
